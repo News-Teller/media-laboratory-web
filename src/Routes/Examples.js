@@ -3,6 +3,7 @@ import { Container, Grid, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeroContainer } from '../Components'
 import { copyToClipboard } from '../Utilities/Utilities.js';
+import sharedStyles from '../SharedStyles';
 
 const links = [
   "https://embed.newsteller.io/5eebe705f89e",
@@ -16,10 +17,7 @@ const getIdFromEmbedViz = (url) => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
+  ...sharedStyles(theme),
 }));
 
 export default function Examples() {
@@ -33,7 +31,7 @@ export default function Examples() {
         backgroundColor="#2618B1"
         backgroundElementsFill="%230b5fa4"
       />
-      <Container className={classes.container}>
+      <Container className={classes.contentBox}>
         <Grid container spacing={4}>
           {links.map((link) => (
             <>

@@ -3,6 +3,7 @@ import { Typography, Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { CodeBlock, dracula } from "react-code-blocks";
 import { HeroContainer } from '../Components'
+import sharedStyles from '../SharedStyles';
 
 const code_1 = `git clone https://github.com/News-Teller/media-laboratory.git
 cd media-laboratory
@@ -14,24 +15,8 @@ docker-compose up -d mongodb
 python index.py`;
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }
+  ...sharedStyles(theme),
 }));
-
 
 export default function Developers() {
   const classes = useStyles();
@@ -45,7 +30,7 @@ export default function Developers() {
           backgroundElementsFill="%2300a372"
         />
 
-        <Container className={classes.container} maxWidth="md">
+        <Container className={classes.contentBox} maxWidth="md">
           <Grid container spacing={3} justifyContent="center">
             <Grid item xs={12}>
               <Typography variant="h3">Installation</Typography>

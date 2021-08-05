@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 import { AppBar, Container, Toolbar, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import clsx from  'clsx';
 import { Page } from './Components'
 import Developers from './Routes/Developers.js';
 import Home from './Routes/Home/Home.js';
 import Examples from './Routes/Examples.js';
-import GuideLines from './Routes/Guidelines/Guidelines.js';
-import clsx from  'clsx';
+import Guidelines from './Routes/Guidelines/Guidelines.js';
 import './App.css';
 
 
@@ -79,11 +79,10 @@ function App() {
           <Route
             path="/guidelines"
             render={() => (
-              <Page title="GuideLines" component={GuideLines} />
+              <Page title="Guidelines" component={Guidelines} />
             )}
           />
         </Switch>
-
       </div>
     </Router>
     // </ThemeProvider>

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import HeroContainer from '../../Components/HeroContainer.js'
+import HeroContainer from '../../Components/HeroContainer'
+import sharedStyles from '../../SharedStyles';
 import ajm from './Partners/ajm.png';
 import epfl from './Partners/epfl.png';
 import heidi from './Partners/heidi.png';
@@ -31,10 +32,7 @@ const partners = [
 ];
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
+  ...sharedStyles(theme),
   logo: {
     width: '100%',
     padding: theme.spacing(2),
@@ -54,7 +52,7 @@ export default function Home() {
         backgroundColor="#ffb400"
         backgroundElementsFill="%23ffe100"
       />
-      <Container className={classes.container} maxWidth="md">
+      <Container className={classes.contentBox} maxWidth="md">
         <Grid container spacing={3}>
           {partners.map(item => (
             <Grid item xs={2}>

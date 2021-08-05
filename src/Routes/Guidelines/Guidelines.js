@@ -4,19 +4,15 @@ import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import { loadCSS } from 'fg-loadcss';
 import HeroContainer from '../../Components/HeroContainer.js'
+import sharedStyles from '../../SharedStyles';
 import MediaCard from './MediaCard.js';
 import './Guidelines.css';
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
+  ...sharedStyles(theme),
+  textField: {
+    marginBottom: theme.spacing(2),
+  }
 }));
 
 const initialState = {
@@ -77,11 +73,12 @@ export default function GuideLines() {
         backgroundColor="#e40045"
         backgroundElementsFill="%23fe5600"
       />
-      <Container className={classes.container}>
+      <Container className={classes.contentBox}>
         <TextField
-         label="Filter"
-         variant="outlined"
-         onChange={handleChange()}
+          label="Filter"
+          variant="outlined"
+          onChange={handleChange()}
+          className={classes.textField}
         />
         {!state.data && !state.error && (<LinearProgress color="secondary" />)}
         {state.data && !state.error && (
