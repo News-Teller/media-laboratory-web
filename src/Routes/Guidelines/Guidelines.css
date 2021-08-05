@@ -1,0 +1,8 @@
+.fa {
+  font-size: 32px;
+  color: #9c47fc;
+  display: block;
+  background: -webkit-linear-gradient(#9c47fc, #d2357e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
