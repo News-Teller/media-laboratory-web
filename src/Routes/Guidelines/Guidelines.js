@@ -3,9 +3,9 @@ import { Grid, Container, TextField, LinearProgress} from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
 import { loadCSS } from 'fg-loadcss';
-import HeroContainer from '../../Components/HeroContainer.js'
+import HeroContainer from '../../Components/HeroContainer'
 import sharedStyles from '../../SharedStyles';
-import MediaCard from './MediaCard.js';
+import MediaCard from '../../Components/MediaCard';
 import './Guidelines.css';
 
 const useStyles = makeStyles((theme) => ({

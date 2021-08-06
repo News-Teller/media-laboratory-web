@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeroContainer } from '../Components'
-import { copyToClipboard } from '../Utilities/Utilities.js';
+import { copyToClipboard } from '../Utilities';
 import sharedStyles from '../SharedStyles';
 
 const links = [

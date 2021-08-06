@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Footer from './Footer.js'
+import Footer from './Footer'
 
 function Page({ title, component }) {
   useEffect(() => {

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MediaCard({title, text}) {
+export default function MediaCard({ title, text }) {
   const classes = useStyles();
 
   return (
