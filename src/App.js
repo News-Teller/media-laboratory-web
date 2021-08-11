@@ -7,6 +7,7 @@ import Developers from './Routes/Developers.js';
 import Home from './Routes/Home/Home.js';
 import Examples from './Routes/Examples.js';
 import Guidelines from './Routes/Guidelines/Guidelines.js';
+import NotFound from './Routes/NotFound.js';
 import './App.css';
 
 
@@ -80,6 +81,11 @@ function App() {
             path="/guidelines"
             render={() => (
               <Page title="Guidelines" component={Guidelines} />
+            )}
+          />
+          <Route
+            render={() => (
+              <Page title="Page Not Found" component={NotFound} />
             )}
           />
         </Switch>

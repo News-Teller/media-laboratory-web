@@ -17,8 +17,13 @@ function Page({ title, component }) {
 }
 
 Page.propTypes = {
-  title:  PropTypes.string.isRequired,
-  component: PropTypes.node.isRequired,
+  title:  PropTypes.string,
+  component: PropTypes.func.isRequired,
 };
+
+Page.defaultTypes = {
+  title: null,
+};
+
 
 export default Page;
