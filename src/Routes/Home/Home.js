@@ -55,7 +55,7 @@ export default function Home() {
       <Container className={classes.contentBox} maxWidth="md">
         <Grid container spacing={3}>
           {partners.map(item => (
-            <Grid item xs={2}>
+            <Grid key={`partner-${item.name}`} item xs={2}>
               <a href={item.url} rel="noreferrer">
                 <img src={item.img} className={classes.logo} alt={item.name} />
               </a>
