@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MediaCard({ title, text }) {
+export default function MediaCard({ id, title, text }) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card id={id} className={classes.root}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -50,6 +50,7 @@ export default function MediaCard({ title, text }) {
 }
 
 MediaCard.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 };

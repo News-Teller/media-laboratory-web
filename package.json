@@ -22,7 +22,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "HTTPS=false react-scripts start",
+    "client": "HTTPS=false react-scripts start",
+    "server": "node src/server.js",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

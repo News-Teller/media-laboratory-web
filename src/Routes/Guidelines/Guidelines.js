@@ -25,35 +25,40 @@ export default function GuideLines() {
 
   const [state, setState] = useState(initialState)
   const [itemList, setItemList] = useState(state.data || []);
-  // const [state, setState] = useState("");
 
   const handleChange = () => (event) => {
     if (!state.data) return;
     const keyword = event.target.value.toLowerCase();
     setItemList(state.data.filter(content =>
-      content.title.toLowerCase().indexOf(keyword) > -1
+      content.title.toLowerCase().search(keyword) > -1
     ));
   }
 
   useEffect(() => {
-    // Dynamic load guidelines data
-    import('./Guidelines.json')
-    .then(({guidelines}) => {
-      if (guidelines) {
+    async function fetchData() {
+      const response = await fetch('/guidelines.json');
+
+      if (response.status === 200) {
+        const body = await response.json();
+
+        if (!body || !body.guidelines) return;
+
         setState({
-          data: guidelines,
+          data: body.guidelines,
           error: false,
         });
-        setItemList(guidelines);
+
+        setItemList(body.guidelines);
+      } else {
+        console.warn(response);
+        setState({
+          data: null,
+          error: response.statusText || 'internal error',
+        });
       }
-    })
-    .catch(error => {
-      console.warn(error);
-      setState({
-        data: null,
-        error,
-      });
-    });
+    }
+
+    fetchData();
 
     const node = loadCSS(
       'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
@@ -81,11 +86,11 @@ export default function GuideLines() {
           className={classes.textField}
         />
         {!state.data && !state.error && (<LinearProgress color="secondary" />)}
-        {state.data && !state.error && (
+        {itemList && !state.error && (
         <Grid container spacing={4}>
-          {itemList.sort((a,b) => {return a.t > b.t}).map((content, index) => (
-            <Grid item key={index} sm={12} md={4}>
-              <MediaCard title={content.title} text={content.body}/>
+          {itemList.map(item => (
+            <Grid item key={item.id} sm={12} md={4}>
+              <MediaCard id={`guideline-${item.id}`} title={item.title} text={item.body}/>
             </Grid>
           ))}
         </Grid>
