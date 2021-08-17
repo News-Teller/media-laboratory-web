@@ -1,0 +1,25 @@
+
+  __  __          _ _         _           _                     _
+ |  \/  |        | (_)       | |         | |                   | |
+ | \  / | ___  __| |_  __ _  | |     __ _| |__   ___  _ __ __ _| |_ ___  _ __ _   _
+ | |\/| |/ _ \/ _` | |/ _` | | |    / _` | '_ \ / _ \| '__/ _` | __/ _ \| '__| | | |
+ | |  | |  __/ (_| | | (_| | | |___| (_| | |_) | (_) | | | (_| | || (_) | |  | |_| |
+ |_|  |_|\___|\__,_|_|\__,_| |______\__,_|_.__/ \___/|_|  \__,_|\__\___/|_|   \__, |
+                                                                               __/ |
+                                                                              |___/
+
+# TEAM
+
+  Jeremie Rappaz  (Doctoral researcher)
+  From: Switzerland
+  Email: jeremie.rappaz@epfl.ch
+
+  Marco Romanelli (Engineer)
+  From: Italy
+  Email: marco.romanelli@epf.ch
+
+# THANKS
+
+  Prof. Karl Aberer (Full Professor)
+  From: Austria
+  Email: karl.aberer@epfl.ch
