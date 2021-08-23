@@ -1,8 +1,8 @@
 import React from 'react';
-import { Container, Grid, TextField } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeroContainer } from '../Components'
-import { copyToClipboard } from '../Utilities';
+import { CopyBlock, solarizedLight } from "react-code-blocks";
 import sharedStyles from '../SharedStyles';
 
 const links = [
@@ -17,7 +17,7 @@ const getIdFromEmbedViz = (url) => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  ...sharedStyles(theme),
+  ...sharedStyles(theme)
 }));
 
 export default function Examples() {
@@ -27,31 +27,34 @@ export default function Examples() {
     <Container>
       <HeroContainer
         title="Examples"
-        subtitle="TODO"
+        subtitle=" " // TODO
         backgroundColor="#2618B1"
         backgroundElementsFill="%230b5fa4"
       />
       <Container className={classes.contentBox}>
         <Grid container spacing={4}>
-          {links.map((link) => (
-            <>
-            <Grid item key={getIdFromEmbedViz(link)} sm={12} md={6}>
-              <TextField
-                id="standard-read-only-input"
-                label="Copy me"
-                defaultValue={link}
-                InputProps={{
-                  readOnly: true,
-                }}
-                variant="outlined"
-                onClick={(event) => copyToClipboard(event.target.value)}
-              />
-            </Grid>
-            <Grid item key={link} sm={12} md={6}>
-              <iframe title={getIdFromEmbedViz(link)} src={link} width="100%" height="500px" frameborder="0"></iframe>
-            </Grid>
-            </>
-          ))}
+          {links.map((link) => {
+            const vid = getIdFromEmbedViz(link);
+
+            return (
+              <React.Fragment key={`viz-fragment-${vid}`}>
+                <Grid key={`viz-grid-sx-${vid}`} item sm={12} md={6}>
+                  <CopyBlock
+                    key={`viz-code-${vid}`}
+                    text={link}
+                    language={"bash"}
+                    showLineNumbers={false}
+                    theme={solarizedLight}
+                    codeBlock
+                    codeContainerStyle={{fontSize: '1.125rem'}}
+                    customStyle={{borderRadius: '0.5rem'}}
+                  />
+                </Grid>
+                <Grid key={`viz-grid-dx-${vid}`} item sm={12} md={6}>
+                  <iframe key={`viz-iframe-${vid}`} title={getIdFromEmbedViz(link)} src={link} width="100%" height="500px" frameBorder="0"></iframe>
+                </Grid>
+              </React.Fragment>
+          )})}
         </Grid>
       </Container>
     </Container>

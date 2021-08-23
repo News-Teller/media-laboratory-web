@@ -36,7 +36,8 @@ export default function GuideLines() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch('/guidelines.json');
+      const { PUBLIC_URL } = process.env;
+      const response = await fetch(`${PUBLIC_URL}/guidelines.json`);
 
       if (response.status === 200) {
         const body = await response.json();
@@ -74,7 +75,7 @@ export default function GuideLines() {
     <Container>
       <HeroContainer
         title="Guidelines"
-        subtitle="TODO"
+        subtitle=" " // TODO
         backgroundColor="#e40045"
         backgroundElementsFill="%23fe5600"
       />
