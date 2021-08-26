@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charSet="utf-8" />
+    <title>Popovers.js example</title>
+
+    <style>
+        html {
+            font-size: 18px;
+        }
+
+        div#root {
+            margin: 10px;
+            width: 45%;
+        }
+
+        h2 {
+          margin-top: 1.5rem;
+        }
+
+        .demo {
+          text-align: justify;
+        }
+
+        code {
+          font-size: 0.9em;
+        }
+
+        pre {
+            background: rgb(253, 246, 227) none repeat scroll 0% 0%;
+            padding: 0.5rem;
+            margin: 0.8rem 0.8rem 1rem 0.8rem;
+            font-size: 80%;
+            overflow-y: auto;
+        }
+
+        span[data-toggle="popover"] {
+            border-bottom: 1px solid;
+            color: #69e;
+            cursor: help;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h1><code>Popovers.js</code> example</h1>
+
+        <h2>Demo</h2>
+        <div class="demo">
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the
+            <span data-toggle="popover" data-card-id="2">card #2</span>
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book.
+          </p>
+          <p>
+            It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially
+            <span data-toggle="popover" data-card-id="15">card #15</span> unchanged. <br />
+            It was popularised in the 1960s with the release of
+            Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+        </p>
+        </div>
+
+        <h2>Code</h2>
+        <div>
+          <p>
+              To use <code>popover.js</code>, you'll need to
+          </p>
+          <ul>
+              <li>
+                  Import the <code>popover.js</code> library and it's dependancies.
+                  <pre>
+&lt;script src="https://unpkg.com/@popperjs/core@2">&lt;/script&gt;
+&lt;script src="https://news-teller.github.io/media-laboratory-web/popperjs.js">&lt;/script&gt;</pre>
+              </li>
+              <li>
+                  Use the following attributes to define a trigger element
+                  using the <code>data-card-id</code> attribute to set guideline card content.
+                  <pre>&lt;span data-toggle="popover" data-card-id="2"&gt;hover to toggle popover&lt;/span&gt;</pre>
+              </li>
+              <li>
+                  You can also customize the design of the popovers with the following classes:
+                  <code>.popover</code>, <code>.popover-header</code>, <code>.popover-body</code>.
+                  <br />
+                  See <a href="https://news-teller.github.io/media-laboratory-web/">Media Laboratory website</a> for more information.
+              </li>
+          </ul>
+        </div>
+
+        <h2>Bootstrap version</h2>
+        <div>
+          <p>
+              <code>popover.bootsrap.js</code> is a lighter version designed to work with Bootstrap (v4 or v5).
+          </p>
+          <ul>
+              <li>
+                Include both Bootstrap's CSS and JS bundle. For more information visit the
+                <a href="https://getbootstrap.com/docs/5.1/components/popovers/">official documentation</a>.
+              </li>
+              <li>
+                  Import the <code>popover.bootsrap.js</code> library.
+                  <pre>
+&lt;script src="https://news-teller.github.io/media-laboratory-web/popover.bootsrap.js">&lt;/script&gt;</pre>
+              </li>
+              <li>
+                Just add the <code>data-card-id</code> attribute to triggers elements, such as:
+<pre>&lt;button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover"
+  title="default title" data-bs-content="default content" data-card-id="15"&gt;
+    Click to toggle popover
+&lt;/button&gt;</pre>
+              <li>
+                  Bootstrap <code>title</code> and <code>data-content</code>
+                  (or <code>data-bs-content</code> in version 5.x) will be populated
+                  with Media Laboratory guideline cards data.
+              </li>
+          </ul>
+        </div>
+
+    </div>
+
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch%2Ces2018%2CPromise%2CArray.prototype.find%2CObject.assign"></script> -->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="popovers.js"></script>
+</body>
+
+</html>

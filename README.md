@@ -10,8 +10,15 @@ Media Laboratory website.
 
 ## Scripts
 
-- `yarn build` - builds the app for production to the `build` folder.
+- `yarn build` - Builds the app for production to the `build` folder.
+- `yarn build-popovers` - Build the popovers.js library for guideline cards.
 - `yarn test` - Runs the test watcher in an interactive mode.
+- `yarn deploy` - Deploy on Github Pages.
+
+## Guideline cards `popovers.js`
+
+See the [Guideline page](https://news-teller.github.io/media-laboratory-web)
+on the Media Laboratory website for more information on how to use it.
 
 ## License
 
