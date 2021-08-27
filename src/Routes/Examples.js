@@ -46,7 +46,6 @@ export default function Examples() {
                     showLineNumbers={false}
                     theme={solarizedLight}
                     codeBlock
-                    codeContainerStyle={{fontSize: '1.125rem'}}
                     customStyle={{borderRadius: '0.5rem'}}
                   />
                 </Grid>

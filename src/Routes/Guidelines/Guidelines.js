@@ -1,30 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Container, TextField, LinearProgress} from '@material-ui/core';
-import Alert from '@material-ui/lab/Alert';
+import { Box, Grid, Container, LinearProgress, TextField, Typography, } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { makeStyles } from '@material-ui/core/styles';
-import { loadCSS } from 'fg-loadcss';
-import HeroContainer from '../../Components/HeroContainer'
 import sharedStyles from '../../SharedStyles';
-import MediaCard from '../../Components/MediaCard';
+import { HeroContainer, MediaCard, SplitView} from '../../Components';
+import useScripts from '../../Hooks/useScripts';
 import './Guidelines.css';
 
 const useStyles = makeStyles((theme) => ({
   ...sharedStyles(theme),
+  demoBox: {
+    marginBottom: theme.spacing(5),
+  },
+  title: {
+    marginBottom: theme.spacing(2.5),
+  },
   textField: {
     marginBottom: theme.spacing(2),
-  }
+  },
 }));
 
-const initialState = {
-  data: null,
-  error: false,
-}
-
 export default function GuideLines() {
+  // Set a limit on selectable cards
+  const selectionLimit = 5;
+
   const classes = useStyles();
 
-  const [state, setState] = useState(initialState)
+  const [state, setState] = useState({
+    data: null,
+    error: false,
+  });
   const [itemList, setItemList] = useState(state.data || []);
+  const [selected, setSelected] = useState([]);
 
   const handleChange = () => (event) => {
     if (!state.data) return;
@@ -34,6 +41,18 @@ export default function GuideLines() {
     ));
   }
 
+  const toggleSelection = (cardID) => {
+    const id = cardID.slice(10);
+    if (selected.includes(id)) {
+      // Remove id from selection
+      setSelected(prevState => prevState.filter(item => item !== id));
+    } else if (selected.length < selectionLimit) {
+      // Add id to selection
+      setSelected(prevState => [...prevState, id]);
+    }
+  }
+
+   // Fetch guideline cards data
   useEffect(() => {
     async function fetchData() {
       const { PUBLIC_URL } = process.env;
@@ -44,11 +63,13 @@ export default function GuideLines() {
 
         if (!body || !body.guidelines) return;
 
+        // Set full guidelines data
         setState({
           data: body.guidelines,
           error: false,
         });
 
+        // Set searched items
         setItemList(body.guidelines);
       } else {
         console.warn(response);
@@ -58,18 +79,27 @@ export default function GuideLines() {
         });
       }
     }
-
     fetchData();
-
-    const node = loadCSS(
-      'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
-      document.querySelector('#font-awesome-css'),
-    );
-
-    return () => {
-      node.parentNode.removeChild(node);
-    };
   }, []);
+
+  // Popovers elements needs to be recomputed each time a new card is selected
+  // because trigger elements need to be re-parsed from the document
+  useEffect(() => {
+    const computePopoverElements = window['computePopoverElements'];
+    if (computePopoverElements) {
+      computePopoverElements();
+    } else {
+      console.warn('computePopoverElements is missing!');
+    }
+  }, [selected.length]);
+
+  // Add popoversjs script and dependancies
+  const popoversjsDeps = [
+    'https://polyfill.io/v3/polyfill.min.js?features=fetch%2Ces2018%2CPromise%2CArray.prototype.find%2CObject.assign',
+    'https://unpkg.com/@popperjs/core@2',
+    `${process.env.PUBLIC_URL}/popovers.js`,
+  ];
+  useScripts(popoversjsDeps);
 
   return (
     <Container>
@@ -80,6 +110,15 @@ export default function GuideLines() {
         backgroundElementsFill="%23fe5600"
       />
       <Container className={classes.contentBox}>
+
+        {/* DEMO section */}
+        <Box className={classes.demoBox}>
+          <Typography variant="h4" className={classes.title}>Demo</Typography>
+          <SplitView ids={selected} />
+        </Box>
+
+        {/* CARDS section */}
+        <Typography variant="h4">Cards</Typography>
         <TextField
           label="Filter"
           variant="outlined"
@@ -89,11 +128,20 @@ export default function GuideLines() {
         {!state.data && !state.error && (<LinearProgress color="secondary" />)}
         {itemList && !state.error && (
         <Grid container spacing={4}>
-          {itemList.map(item => (
+          {itemList.map(item => {
+            const isSelected = selected.includes(item.id);
+            return (
             <Grid item key={item.id} sm={12} md={4}>
-              <MediaCard id={`guideline-${item.id}`} title={item.title} text={item.body}/>
+              <MediaCard
+                id={`guideline-${item.id}`}
+                title={item.title}
+                text={item.body}
+                isSelected={isSelected}
+                onSelection={toggleSelection}
+                isDisabled={!isSelected && (selected.length >= selectionLimit)}
+              />
             </Grid>
-          ))}
+          )})}
         </Grid>
         )}
         {!state.data && state.error && (<Alert severity="error">Oops, Something Went Wrong</Alert>)}

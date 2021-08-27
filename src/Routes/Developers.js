@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, solarizedLight } from "react-code-blocks";
 import { HeroContainer } from '../Components'
 import sharedStyles from '../SharedStyles';
 
@@ -56,7 +56,7 @@ export default function Developers() {
                text={code1}
                language={"bash"}
                showLineNumbers={false}
-               theme={dracula}
+               theme={solarizedLight}
                codeBlock
               />
             </Grid>
@@ -70,7 +70,7 @@ export default function Developers() {
                text={code2}
                language={"bash"}
                showLineNumbers={false}
-               theme={dracula}
+               theme={solarizedLight}
                codeBlock
               />
             </Grid>
@@ -84,7 +84,7 @@ export default function Developers() {
                text={code3}
                language={"bash"}
                showLineNumbers={false}
-               theme={dracula}
+               theme={solarizedLight}
                codeBlock
               />
             </Grid>
