@@ -1,4 +1,4 @@
-const computePopoverElements = (function (Popper) {
+const reloadPopoversjsElements = (function (Popper) {
   // Ensure Popper
   if (typeof Popper === 'undefined') {
     console.error('Popper is required (https://popper.js.org)');
@@ -161,4 +161,8 @@ const computePopoverElements = (function (Popper) {
   };
 })(window['Popper']);
 
-computePopoverElements();
+// Export main function
+window.reloadPopoversjsElements = reloadPopoversjsElements;
+
+// Run
+reloadPopoversjsElements();

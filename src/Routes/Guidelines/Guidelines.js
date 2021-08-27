@@ -85,11 +85,11 @@ export default function GuideLines() {
   // Popovers elements needs to be recomputed each time a new card is selected
   // because trigger elements need to be re-parsed from the document
   useEffect(() => {
-    const computePopoverElements = window['computePopoverElements'];
-    if (computePopoverElements) {
-      computePopoverElements();
+    const reloadPopoversjsElements = window['reloadPopoversjsElements'];
+    if (reloadPopoversjsElements) {
+      reloadPopoversjsElements();
     } else {
-      console.warn('computePopoverElements is missing!');
+      console.warn('reloadPopoversjsElements is missing!');
     }
   }, [selected.length]);
 
@@ -97,7 +97,7 @@ export default function GuideLines() {
   const popoversjsDeps = [
     'https://polyfill.io/v3/polyfill.min.js?features=fetch%2Ces2018%2CPromise%2CArray.prototype.find%2CObject.assign',
     'https://unpkg.com/@popperjs/core@2',
-    `${process.env.PUBLIC_URL}/popovers.js`,
+    `https://news-teller.github.io/media-laboratory-web/popovers.js`,
   ];
   useScripts(popoversjsDeps);
 
