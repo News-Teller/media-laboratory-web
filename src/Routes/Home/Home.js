@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import HeroContainer from '../../Components/HeroContainer'
+import { HeroContainer } from '../../Components'
 import sharedStyles from '../../SharedStyles';
 import ajm from './Partners/ajm.png';
 import epfl from './Partners/epfl.png';
