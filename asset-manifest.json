@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/media-laboratory-web/static/css/main.23d61fa4.chunk.css",
-    "main.js": "/media-laboratory-web/static/js/main.659b3c67.chunk.js",
-    "main.js.map": "/media-laboratory-web/static/js/main.659b3c67.chunk.js.map",
+    "main.js": "/media-laboratory-web/static/js/main.9b4b7ca8.chunk.js",
+    "main.js.map": "/media-laboratory-web/static/js/main.9b4b7ca8.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abap.js": "/media-laboratory-web/static/js/react-syntax-highlighter_languages_refractor_abap.6d1f050c.chunk.js",
     "react-syntax-highlighter_languages_refractor_abap.js.map": "/media-laboratory-web/static/js/react-syntax-highlighter_languages_refractor_abap.6d1f050c.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_actionscript.js": "/media-laboratory-web/static/js/react-syntax-highlighter_languages_refractor_actionscript.29db3016.chunk.js",
@@ -307,21 +307,21 @@
     "react-syntax-highlighter_languages_refractor_yaml.js.map": "/media-laboratory-web/static/js/react-syntax-highlighter_languages_refractor_yaml.234c3c81.chunk.js.map",
     "runtime-main.js": "/media-laboratory-web/static/js/runtime-main.c14e42c1.js",
     "runtime-main.js.map": "/media-laboratory-web/static/js/runtime-main.c14e42c1.js.map",
-    "static/js/153.addd0b0e.chunk.js": "/media-laboratory-web/static/js/153.addd0b0e.chunk.js",
-    "static/js/153.addd0b0e.chunk.js.map": "/media-laboratory-web/static/js/153.addd0b0e.chunk.js.map",
+    "static/js/153.575b5bd7.chunk.js": "/media-laboratory-web/static/js/153.575b5bd7.chunk.js",
+    "static/js/153.575b5bd7.chunk.js.map": "/media-laboratory-web/static/js/153.575b5bd7.chunk.js.map",
     "static/js/154.dc0150fa.chunk.js": "/media-laboratory-web/static/js/154.dc0150fa.chunk.js",
     "static/js/154.dc0150fa.chunk.js.map": "/media-laboratory-web/static/js/154.dc0150fa.chunk.js.map",
     "index.html": "/media-laboratory-web/index.html",
     "static/css/main.23d61fa4.chunk.css.map": "/media-laboratory-web/static/css/main.23d61fa4.chunk.css.map",
-    "static/js/153.addd0b0e.chunk.js.LICENSE.txt": "/media-laboratory-web/static/js/153.addd0b0e.chunk.js.LICENSE.txt",
+    "static/js/153.575b5bd7.chunk.js.LICENSE.txt": "/media-laboratory-web/static/js/153.575b5bd7.chunk.js.LICENSE.txt",
     "static/media/ajm.0ae65734.png": "/media-laboratory-web/static/media/ajm.0ae65734.png",
     "static/media/heidi.f33f1dc2.png": "/media-laboratory-web/static/media/heidi.f33f1dc2.png",
     "static/media/imi.556b0e55.png": "/media-laboratory-web/static/media/imi.556b0e55.png"
   },
   "entrypoints": [
     "static/js/runtime-main.c14e42c1.js",
-    "static/js/153.addd0b0e.chunk.js",
+    "static/js/153.575b5bd7.chunk.js",
     "static/css/main.23d61fa4.chunk.css",
-    "static/js/main.659b3c67.chunk.js"
+    "static/js/main.9b4b7ca8.chunk.js"
   ]
 }
