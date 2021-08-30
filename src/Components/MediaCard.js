@@ -48,7 +48,7 @@ export default function MediaCard({ id, title, text, isSelected, onSelection, is
         title={title}
       />
       <CardActions disableSpacing>
-        <IconButton onClick={() => onSelection(id)} aria-label="add to code" disabled={isDisabled}>
+        <IconButton onClick={onSelection} aria-label="add to code" disabled={isDisabled}>
           {isSelected ? <RemoveCircle /> : <AddCircle />}
         </IconButton>
         <IconButton

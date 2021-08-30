@@ -63,11 +63,12 @@ const styles = (theme) => ({
     - code: where we show the html code
     - jsx: the output, rendered from jsx elements
 */
-const getViews = (ids, classes) => {
-  const lorems = getRandomLoremIpsum((ids.length > 0) ? ids.length : 1);
+const getViews = (cardItems, classes) => {
+  const lorems = getRandomLoremIpsum((cardItems.length > 0) ? cardItems.length : 1);
 
   // Split lorem ipsum text to insert popover trigger element
-  const elements = ids.map((id, index) => {
+  const elements = cardItems.map((item, index) => {
+    const { id, title } = item;
     const text = lorems[index];
 
     // Split text to insert trigger element
@@ -76,11 +77,11 @@ const getViews = (ids, classes) => {
     const first = splitted.slice(0, sep).join(' ');
     const second = splitted.slice(sep + 1).join(' ');
 
-    const html = `\t<p>\n\t\t${first}\n\t\t<span data-toggle="popover" data-card-id="${id}">card #${id}</span>\n\t\t${second}\n\t</p>`;
+    const html = `\t<p>\n\t\t${first}\n\t\t<span data-toggle="popover" data-card-id="${id}">${title}</span>\n\t\t${second}\n\t</p>`;
     const jsx = (
       <p key={`jsx-p-${id}`}>
         {first}{' '}
-        <span className={classes.popoverTrigger} data-toggle="popover" data-card-id={`${id}`}>card #{id}</span>
+        <span className={classes.popoverTrigger} data-toggle="popover" data-card-id={`${id}`}>{title}</span>
         {' '}{second}
       </p>
     );
@@ -108,8 +109,8 @@ const getViews = (ids, classes) => {
   return [code, jsx];
 };
 
-function SplitView({ ids, classes }) {
-  const [code, jsx] = getViews(ids, classes);
+function SplitView({ cardItems, classes }) {
+  const [code, jsx] = getViews(cardItems, classes);
 
   return (
     <Grid container alignItems="stretch" spacing={2}>
@@ -137,7 +138,11 @@ function SplitView({ ids, classes }) {
 }
 
 SplitView.propTypes = {
-  ids: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cardItems: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string,
+  })).isRequired,
 };
 
 export default withStyles(styles)(SplitView);

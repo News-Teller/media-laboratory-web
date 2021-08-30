@@ -21,38 +21,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GuideLines() {
+  const classes = useStyles();
+
   // Set a limit on selectable cards
   const selectionLimit = 5;
 
-  const classes = useStyles();
+  // Define states.
+  // First one contains potential errors
+  // from fetching json card data
+  const [error, setError] = useState(false);
 
-  const [state, setState] = useState({
-    data: null,
-    error: false,
-  });
-  const [itemList, setItemList] = useState(state.data || []);
+  // Second contains the full cards data
+  const [cardsData, setCardsData] = useState(null);
+
+  // Third contains filtered items ids
+  const [filtered, setFiltered] = useState([]);
+
+  // Fourth contains selected items ids
   const [selected, setSelected] = useState([]);
 
-  const handleChange = () => (event) => {
-    if (!state.data) return;
+  // This function handles the filtering of items from the search
+  // In some way, a map cardsData -> itemList
+  const handleSearch= () => (event) => {
+    if (!cardsData) return;
     const keyword = event.target.value.toLowerCase();
-    setItemList(state.data.filter(content =>
-      content.title.toLowerCase().search(keyword) > -1
-    ));
+    setFiltered(cardsData.filter(content =>
+        content.title.toLowerCase().search(keyword) > -1
+      ).map(item => item.id)
+    );
   }
 
-  const toggleSelection = (cardID) => {
-    const id = cardID.slice(10);
-    if (selected.includes(id)) {
-      // Remove id from selection
-      setSelected(prevState => prevState.filter(item => item !== id));
-    } else if (selected.length < selectionLimit) {
-      // Add id to selection
-      setSelected(prevState => [...prevState, id]);
+  // This function handles the selection of cards
+  const handleSelection = (item) => {
+    if (selected.includes(item.id)) {
+      // Remove item from selection
+      setSelected(prevState => prevState.filter(elem => elem !== item.id));
+    } else if (selected.length <= selectionLimit) {
+      // Add item to selection
+      setSelected(prevState => [...prevState, item.id]);
     }
-  }
+  };
 
-   // Fetch guideline cards data
+  // Fetch guideline cards data
   useEffect(() => {
     async function fetchData() {
       const { PUBLIC_URL } = process.env;
@@ -64,19 +74,11 @@ export default function GuideLines() {
         if (!body || !body.guidelines) return;
 
         // Set full guidelines data
-        setState({
-          data: body.guidelines,
-          error: false,
-        });
-
-        // Set searched items
-        setItemList(body.guidelines);
+        setCardsData(body.guidelines);
       } else {
         console.warn(response);
-        setState({
-          data: null,
-          error: response.statusText || 'internal error',
-        });
+
+        setError(response.statusText || 'internal error');
       }
     }
     fetchData();
@@ -114,7 +116,7 @@ export default function GuideLines() {
         {/* DEMO section */}
         <Box className={classes.demoBox}>
           <Typography variant="h4" className={classes.title}>Demo</Typography>
-          <SplitView ids={selected} />
+          <SplitView cardItems={cardsData ? cardsData.filter(item => selected.includes(item.id)) : []} />
         </Box>
 
         {/* CARDS section */}
@@ -122,29 +124,36 @@ export default function GuideLines() {
         <TextField
           label="Filter"
           variant="outlined"
-          onChange={handleChange()}
+          onChange={handleSearch()}
           className={classes.textField}
         />
-        {!state.data && !state.error && (<LinearProgress color="secondary" />)}
-        {itemList && !state.error && (
+        {!cardsData && !error && (<LinearProgress color="secondary" />)}
+        {cardsData && !error && (
         <Grid container spacing={4}>
-          {itemList.map(item => {
-            const isSelected = selected.includes(item.id);
-            return (
-            <Grid item key={item.id} sm={12} md={4}>
-              <MediaCard
-                id={`guideline-${item.id}`}
-                title={item.title}
-                text={item.body}
-                isSelected={isSelected}
-                onSelection={toggleSelection}
-                isDisabled={!isSelected && (selected.length >= selectionLimit)}
-              />
-            </Grid>
-          )})}
+          {cardsData
+            .filter(item => {
+              if (filtered.length === 0) return true;
+              else return filtered.includes(item.id);
+            })
+            .map(item => {
+              const isSelected = selected.includes(item.id);
+
+              return (
+                <Grid item key={item.id} sm={12} md={4}>
+                  <MediaCard
+                    id={`guideline-${item.id}`}
+                    title={item.title}
+                    text={item.body}
+                    isSelected={isSelected}
+                    onSelection={() => handleSelection(item)}
+                    isDisabled={!isSelected && (selected.length >= selectionLimit)}
+                  />
+                </Grid>
+            );
+          })}
         </Grid>
         )}
-        {!state.data && state.error && (<Alert severity="error">Oops, Something Went Wrong</Alert>)}
+        {!cardsData && error && (<Alert severity="error">Oops, Something Went Wrong</Alert>)}
       </Container>
     </Container>
   );
