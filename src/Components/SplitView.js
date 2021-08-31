@@ -77,11 +77,11 @@ const getViews = (cardItems, classes) => {
     const first = splitted.slice(0, sep).join(' ');
     const second = splitted.slice(sep + 1).join(' ');
 
-    const html = `\t<p>\n\t\t${first}\n\t\t<span data-toggle="popover" data-card-id="${id}">${title}</span>\n\t\t${second}\n\t</p>`;
+    const html = `\t<p>\n\t\t${first}\n\t\t<span data-toggle="popovercard" data-card-id="${id}">${title}</span>\n\t\t${second}\n\t</p>`;
     const jsx = (
       <p key={`jsx-p-${id}`}>
         {first}{' '}
-        <span className={classes.popoverTrigger} data-toggle="popover" data-card-id={`${id}`}>{title}</span>
+        <span className={classes.popoverTrigger} data-toggle="popovercard" data-card-id={`${id}`}>{title}</span>
         {' '}{second}
       </p>
     );

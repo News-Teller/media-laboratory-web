@@ -47,50 +47,52 @@ const reloadPopoversjsElements = (function (Popper) {
     console.warn('Couldn\t fetch guidelines data: ', err);
   });
 
-  // Create styles
-  function setStyle() {
+  function setStyle(name) {
     const css = `
-    [data-toggle="popover"] {
-    white-space: nowrap;
+    [data-toggle="NAME"] {
+      white-space: nowrap;
     }
 
-    .popover {
-    background-color: #fff;
-    color: inherit;
-    padding: 0 1rem;
-    z-index: 15;
-    width: 350px;
-    border-radius: 5px;
+    .NAME {
+      background-color: #fff;
+      color: inherit;
+      padding: 0 1rem;
+      z-index: 15;
+      width: 350px;
+      border-radius: 5px;
       box-sizing: border-box;
       box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-    display: none;
+      display: none;
     }
 
-    .popover[data-show] {
-    display: block;
+    .NAME[data-show] {
+      display: block;
     }`;
 
     const style = document.createElement('style');
-    style.innerHTML = css;
+    style.innerHTML = css.replaceAll('NAME', name);
     document.head.prepend(style);
   };
-  if (!params['disable-css']) setStyle();
-
 
   // Create tooltip element
+  const tooltipClass = ('popover-class' in params) ? params['popover-class'] : 'popovercard';
   let tooltip;
-  if (('popover-element' in params) && (params['popover-element']==="external")) {
-    tooltip = document.body.querySelector('.popover');
+
+  // Set styles
+  if (!params['disable-css']) setStyle(tooltipClass);
+
+  if (('popover-element' in params) && (params['popover-element']==='external')) {
+    tooltip = document.body.querySelector('.' + tooltipClass);
   } else {
     tooltip = document.createElement('div');
-    tooltip.classList.add('popover'); tooltip.setAttribute('role', 'tooltip');
-    tooltip.innerHTML = '<h3 class="popover-header"></h3><div class="popover-body"></div>';
+    tooltip.classList.add(tooltipClass); tooltip.setAttribute('role', 'tooltip');
+    tooltip.innerHTML = '<h3 class="popovercard-header"></h3><div class="popovercard-body"></div>';
     document.body.append(tooltip);
   }
 
-  const tooltipTitle = tooltip.querySelector('.popover-header');
-  const tooltipBody = tooltip.querySelector('.popover-body');
+  const tooltipTitle = tooltip.querySelector('.popovercard-header');
+  const tooltipBody = tooltip.querySelector('.popovercard-body');
 
   if (!(tooltip && tooltipTitle && tooltipBody)) throw new Error('Missing popover elements');
 
@@ -138,7 +140,7 @@ const reloadPopoversjsElements = (function (Popper) {
 
   // Activate popovers
   return function computePopoverElements() {
-    popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'));
+    popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="' + tooltipClass + '"]'));
     popperInstanceList = popoverTriggerList.map(function (popoverTriggerEl) {
       // eslint-disable-next-line no-undef
       return Popper.createPopper(popoverTriggerEl, tooltip);
