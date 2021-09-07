@@ -3,7 +3,7 @@ import { AppBar, Container, Toolbar, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from  'clsx';
 import { Page } from './Components'
-import Developers from './Routes/Developers.js';
+import Developers from './Routes/Developers/Developers.js';
 import Home from './Routes/Home/Home.js';
 import Examples from './Routes/Examples.js';
 import Guidelines from './Routes/Guidelines/Guidelines.js';

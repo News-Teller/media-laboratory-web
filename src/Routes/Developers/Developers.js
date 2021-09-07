@@ -2,15 +2,15 @@ import React from 'react';
 import { Typography, Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { CopyBlock, solarizedLight } from "react-code-blocks";
-import { HeroContainer } from '../Components'
-import sharedStyles from '../SharedStyles';
+import { HeroContainer } from '../../Components'
+import sharedStyles from '../../SharedStyles';
+import Example from './Example';
 
-const code1 = `git clone https://github.com/News-Teller/media-laboratory.git`;
-
-const code2 =`docker build -t medialab-notebook notebook
+// Codes
+const deployment1 = `git clone https://github.com/News-Teller/media-laboratory.git`;
+const deployment2 =`docker build -t medialab-notebook notebook
 docker-compose build`;
-
-const code3 = `docker-compose up -d`;
+const deployment3 = `docker-compose up -d`;
 
 const useStyles = makeStyles((theme) => ({
   ...sharedStyles(theme),
@@ -33,6 +33,8 @@ export default function Developers() {
 
         <Container className={classes.contentBox} maxWidth="md">
           <Grid container spacing={3} justifyContent="center">
+
+            {/* DEPLOYMENT */}
             <Grid item xs={12}>
               <Typography variant="h3">Deployment</Typography>
               <Typography>
@@ -53,7 +55,7 @@ export default function Developers() {
             </Grid>
             <Grid item xs={rightWidth}>
               <CopyBlock
-               text={code1}
+               text={deployment1}
                language={"bash"}
                showLineNumbers={false}
                theme={solarizedLight}
@@ -67,7 +69,7 @@ export default function Developers() {
             </Grid>
             <Grid item xs={rightWidth}>
               <CopyBlock
-               text={code2}
+               text={deployment2}
                language={"bash"}
                showLineNumbers={false}
                theme={solarizedLight}
@@ -81,7 +83,7 @@ export default function Developers() {
             </Grid>
             <Grid item xs={rightWidth}>
               <CopyBlock
-               text={code3}
+               text={deployment3}
                language={"bash"}
                showLineNumbers={false}
                theme={solarizedLight}
@@ -100,6 +102,10 @@ export default function Developers() {
             <Grid item xs={rightWidth-2}>
               <img src={"https://jupyter.org/assets/labpreview.png"} alt="notebook environment preview" width="75%"/>
             </Grid>
+
+            {/* Example */}
+            <Example />
+
           </Grid>
         </Container>
       </Container>
