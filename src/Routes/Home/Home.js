@@ -1,6 +1,6 @@
 import React from 'react';
-import { Grid, Container,Avatar } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
+import { Link as RouterLink } from 'react-router-dom';
+import { Grid, Container, Avatar, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { HeroContainer } from '../../Components'
 import sharedStyles from '../../SharedStyles';
@@ -57,10 +57,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '20px',
   },
   probTitle: {
-    marginBottom: '16px',
+    marginBottom: theme.spacing(2),
   },
   probLink: {
-    paddingTop: '16px',
+    paddingTop: theme.spacing(2),
   },
   avatar: {
     backgroundColor: 'black',
@@ -92,7 +92,12 @@ export default function Home() {
         </Typography>
         <Typography variant="body1" gutterBottom>
           Data-journalism is an emergent practice that helps journalists conveying complex stories with data-visualizations.
-          Data stories have been used for years by technologist and hobbyists, but many challenges remain for a wider media adoption. Our project is an inter-disciplinary collaboration between <a href="https://www.epfl.ch">EPFL</a>, <a href="https://unine.ch/ajm/">AJM</a> and <a href="https://www.heidi.news/">Heidi.news</a> to identify those challenges and bootstrap open-source solutions for newsroom environments.
+          Data stories have been used for years by technologist and hobbyists, but many challenges remain for a wider media adoption.
+          Our project is an inter-disciplinary collaboration between{' '}
+          <Link href="https://www.epfl.ch" rel="noreferrer">EPFL</Link>,{' '}
+          <Link href="https://unine.ch/ajm/" rel="noreferrer">AJM</Link> and {' '}
+          <Link href="https://www.heidi.news/" rel="noreferrer">Heidi.news</Link>{' '}
+          to identify those challenges and bootstrap open-source solutions for newsroom environments.
         </Typography>
 
         <Typography variant="h5" className={classes.largeGutter} >
@@ -110,7 +115,9 @@ export default function Home() {
             </Avatar>
             <div className={classes.probTitle}><b>Embeddable graphics</b></div>
             <div>Media Laboratory generates visualizations that can be embedded everywhere with a single link.</div>
-            <div className={classes.probLink}>See <a href="">Examples</a></div>
+            <div className={classes.probLink}>
+              See <Link component={RouterLink} to="/examples">Examples</Link>
+            </div>
           </div>
           </Grid>
           <Grid item xs={6}>
@@ -120,7 +127,9 @@ export default function Home() {
             </Avatar>
             <div className={classes.probTitle}><b>Didactic support</b></div>
             <div>We developed a didactic system, made of cards, that appears on top of technical terms in the figure and in the text.</div>
-            <div className={classes.probLink}>See <a href="">Guidelines</a></div>
+            <div className={classes.probLink}>
+              See <Link component={RouterLink} to="/guidelines">Guidelines</Link>
+            </div>
           </div>
           </Grid>
           <Grid item xs={6}>
@@ -130,7 +139,9 @@ export default function Home() {
             </Avatar>
             <div className={classes.probTitle}><b>Continuous updates</b></div>
             <div>We developpe a system that periodically update the visualization, e.g. such as fetching data from a database every day. </div>
-            <div className={classes.probLink}>See <a href="">Documentation</a></div>
+            <div className={classes.probLink}>
+              See <Link href="https://github.com/News-Teller/media-laboratory" rel="noreferrer">Documentation</Link>
+            </div>
           </div>
           </Grid>
           <Grid item xs={6}>
@@ -140,7 +151,9 @@ export default function Home() {
             </Avatar>
             <div className={classes.probTitle}><b>Quote explorer</b></div>
             <div>Quotes are often uttered by domain experts. Our tool contuniously extracts quotes from articles and links them with specific topics.</div>
-            <div className={classes.probLink}>See <a href="">Quotes</a></div>
+            <div className={classes.probLink}>
+              See <Link component={RouterLink} to="/quotes">Quotes explorer</Link>
+            </div>
           </div>
           </Grid>
         </Grid>
