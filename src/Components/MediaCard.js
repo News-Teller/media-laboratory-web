@@ -81,9 +81,7 @@ export default function MediaCard({ id, term, definition, link, synonyms, tags, 
           href={link}
           variant="button"
           color="textPrimary"
-          onClick={() => {
-            console.info("I'm a button.");
-          }}
+          rel="noreferrer"
         >
           Learn More
         </Link>

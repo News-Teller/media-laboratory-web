@@ -55,7 +55,7 @@ function App() {
               </NavLink>
               <NavLink className={classes.navlink} to="/quotes" activeClassName={classes.current}>
                   <Typography variant="h6" color="inherit">
-                      Quotes
+                      Quotes explorer
                   </Typography>
               </NavLink>
             </Toolbar>
@@ -91,7 +91,7 @@ function App() {
           <Route
             path="/quotes"
             render={() => (
-              <Page title="Quotes" component={Quotes} />
+              <Page title="Quotes explorer" component={Quotes} />
             )}
           />
           <Route
