@@ -27,7 +27,7 @@ export default function Examples() {
     <Container>
       <HeroContainer
         title="Examples"
-        subtitle=" " // TODO
+        subtitle="Media Laboratory generates visualizations that can be embedded everywhere with a single link."
         backgroundColor="#2618B1"
         backgroundElementsFill="%230b5fa4"
       />

@@ -81,7 +81,7 @@ export default function Home() {
     <Container>
       <HeroContainer
         title="Media Laboratory"
-        subtitle="Media Laboratory is a initiative aiming to develop data-journalism in Switzerland"
+        subtitle="Media Laboratory is a initiative aiming to develop data-journalism in Switzerland."
         backgroundColor="#ffb400"
         backgroundElementsFill="%23ffe100"
       />

@@ -26,7 +26,7 @@ export default function Developers() {
       <Container>
         <HeroContainer
           title="Developers"
-          subtitle="This section will help you deploying the Media Laboratory environnement"
+          subtitle="This section will help you deploying the Media Laboratory environnement."
           backgroundColor="#67e300"
           backgroundElementsFill="%2300a372"
         />

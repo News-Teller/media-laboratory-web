@@ -107,7 +107,7 @@ export default function GuideLines() {
     <Container>
       <HeroContainer
         title="Guidelines"
-        subtitle=" " // TODO
+        subtitle="We developed a didactic system, made of cards, that appears on top of technical terms in the figure and in the text."
         backgroundColor="#e40045"
         backgroundElementsFill="%23fe5600"
       />

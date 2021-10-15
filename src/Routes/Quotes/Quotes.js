@@ -137,7 +137,7 @@ export default function Quotes() {
     <Container>
       <HeroContainer
         title="Quotes"
-        subtitle=" " // TODO
+        subtitle="Quotes are often uttered by domain experts. Our tool contuniously extracts quotes from articles and links them with specific topics."
         backgroundColor="#2618B1"
         backgroundElementsFill="%230b5fa4"
       />
