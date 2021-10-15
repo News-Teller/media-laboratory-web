@@ -166,7 +166,10 @@ export default function Home() {
           <Typography variant="body1" gutterBottom>
             We propose an open-source system that creates a production-ready environment for developing and deploying data-visualizations.
             Our system can easily be deployed with Docker and comes with a JupyterLab extension that manages your visualizations.
-            Interested? Learn <a href="">how to deploy your own</a> or check the project <a href="https://github.com/News-Teller/media-laboratory">on Github</a>.
+            Interested?
+            Learn <Link component={RouterLink} to="/developers">how to deploy your own</Link>{' '}
+            or check the project{' '}
+            <Link href="https://github.com/News-Teller/media-laboratory" rel="noreferrer">on Github</Link>.
           </Typography>
         </Container>
 
