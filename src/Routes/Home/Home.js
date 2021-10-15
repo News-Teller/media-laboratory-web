@@ -149,7 +149,7 @@ export default function Home() {
             <Avatar className={classes.avatar}>
               <MessageIcon/>
             </Avatar>
-            <div className={classes.probTitle}><b>Quote explorer</b></div>
+            <div className={classes.probTitle}><b>Quotes explorer</b></div>
             <div>Quotes are often uttered by domain experts. Our tool contuniously extracts quotes from articles and links them with specific topics.</div>
             <div className={classes.probLink}>
               See <Link component={RouterLink} to="/quotes">Quotes explorer</Link>

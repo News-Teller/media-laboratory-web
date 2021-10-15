@@ -32,7 +32,9 @@ export function callSearchAPI(requestData) {
 
   return fetch(`${serverUrl}/api/v1/quotes/search`, {
     method: 'POST',
+    mode: 'cors',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(requestData),
