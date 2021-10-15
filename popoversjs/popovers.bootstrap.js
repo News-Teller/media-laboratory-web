@@ -38,8 +38,8 @@
       if (!id || !guidelinesData || !(id in guidelinesData)) return;
 
       // Set tooltip content via boostrap attributes
-      element.setAttribute('title', guidelinesData[id]['title']);
-      element.setAttribute(dataSelectorBase + 'content', guidelinesData[id]['body']);
+      element.setAttribute('title', guidelinesData[id]['term']);
+      element.setAttribute(dataSelectorBase + 'content', guidelinesData[id]['definition']);
     });
 
     const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {

@@ -46,7 +46,7 @@ export default function GuideLines() {
     if (!cardsData) return;
     const keyword = event.target.value.toLowerCase();
     setFiltered(cardsData.filter(content =>
-        content.title.toLowerCase().search(keyword) > -1
+        content.definition.toLowerCase().search(keyword) > -1
       ).map(item => item.id)
     );
   }
@@ -139,14 +139,18 @@ export default function GuideLines() {
               const isSelected = selected.includes(item.id);
 
               return (
-                <Grid item key={item.id} sm={12} md={4}>
+                <Grid item key={`guideline-card-${item.id}`} sm={12} md={4}>
                   <MediaCard
-                    id={`guideline-${item.id}`}
-                    title={item.title}
-                    text={item.body}
+                    id={item.id}
+                    term={item.term}
+                    definition={item.definition}
+                    link={item.link}
+                    synonyms={item.synonyms}
+                    tags={item.tags}
                     isSelected={isSelected}
                     onSelection={() => handleSelection(item)}
                     isDisabled={!isSelected && (selected.length >= selectionLimit)}
+
                   />
                 </Grid>
             );
