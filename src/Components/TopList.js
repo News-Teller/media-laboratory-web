@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#2618B1",
     color: "#FFF"
   },
+  button: {
+    userSelect: 'text'
+  },
   label: {
     marginLeft: 'auto',
     paddingLeft: 16,
@@ -45,6 +48,7 @@ export default function TopList({ data, onItemClick, avatar, getLabel }) {
               onClick={() => {
                 onItemClick(bucket.key)
               }}
+              className={classes.button}
             >
               {bucket.key}
             </Link>
