@@ -118,7 +118,7 @@ export default function Quotes() {
   const handleAggregationsClick = async (value) => {
     setFormValues(prevState => ({
       ...prevState,
-      searchTerm: value,
+      searchTerm: `"${value}"`,
     }));
 
     await onSearch();
