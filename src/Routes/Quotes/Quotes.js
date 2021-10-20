@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
+  Button,
   Container,
   FormControl,
   FormControlLabel,
@@ -9,6 +10,7 @@ import {
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
 import { HeroContainer, OutlinedBox, SearchBox, TopList } from '../../Components'
 import sharedStyles from '../../SharedStyles';
 import QuoteResults from './QuoteResults';
@@ -31,7 +33,12 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.text.secondary,
     }
   },
+  clearButton: {
+    marginLeft: theme.spacing(1),
+    padding: theme.spacing(0.5),
+  },
   searchContext: {
+    marginLeft: theme.spacing(1),
     '& span': {
       marginRight: theme.spacing(1),
     }
@@ -126,6 +133,12 @@ export default function Quotes() {
     await onSearch();
   };
 
+  const handleClear = async (page) => {
+    setFormValues(defaultFormValues);
+
+    await onSearch();
+  };
+
   // Make first search on page load, only once
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => onSearch(), []);
@@ -144,7 +157,7 @@ export default function Quotes() {
       <Container className={classes.contentBox}>
 
         {/* Search box */}
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.contentBoxGrid}>
 
           <Grid item sm={12} md={12} className={classes.searchBox}>
             <Grid container spacing={2}>
@@ -205,6 +218,18 @@ export default function Quotes() {
                       labelPlacement="start"
                       className={classes.searchContext}
                     />
+
+                    {/* Clear filter button */}
+                    <FormControl>
+                      <Button
+                        color="hinerit"
+                        className={classes.clearButton}
+                        startIcon={<ClearAllIcon />}
+                        onClick={handleClear}
+                      >
+                        Clear
+                      </Button>
+                    </FormControl>
                 </OutlinedBox>
               </Grid>
             </Grid>
