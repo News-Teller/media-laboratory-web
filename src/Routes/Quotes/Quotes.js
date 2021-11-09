@@ -16,7 +16,7 @@ import sharedStyles from '../../SharedStyles';
 import QuoteResults from './QuoteResults';
 import {
   isSearchContext,
-  buildSearchRequest,
+  buildSearchRequest, 
   callSearchAPI,
   buildSearchState,
   getSearchTitle,
@@ -115,10 +115,11 @@ export default function Quotes() {
     await onSearch();
   };
 
-  const handleAggregationsClick = async (value) => {
+  const handleAggregationsClick = async (context, value) => {
     setFormValues(prevState => ({
       ...prevState,
       searchTerm: `"${value}"`,
+      searchContext: context === 'speakers' ? 'speakers' : 'text',
     }));
 
     await onSearch();
@@ -263,7 +264,7 @@ export default function Quotes() {
                 <Typography variant="h5">Top speakers</Typography>
                 <TopList
                   data={state.topSpeakers}
-                  onItemClick={handleAggregationsClick}
+                  onItemClick={(value) => handleAggregationsClick('speakers', value)}
                   avatar={true}
                   getLabel={
                     (item) => { return item.doc_count < 10000 ? `${item.doc_count} quotes`: "More than 10k quotes" }
@@ -276,7 +277,7 @@ export default function Quotes() {
               <Typography variant="h5">Top keywords</Typography>
                 <TopList
                   data={state.topKeywords}
-                  onItemClick={handleAggregationsClick}
+                  onItemClick={(value) => handleAggregationsClick('text', value)}
                   avatar={false}
                   getLabel={
                     (item) => { return item.article_count < 10000 ? `${item.article_count} articles`: "More than 10k articles" }

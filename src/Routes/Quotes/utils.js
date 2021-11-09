@@ -27,10 +27,7 @@ export function buildSearchRequest(state) {
 }
 
 export function callSearchAPI(requestData) {
-  const serverUrl = process.env.NODE_ENV === 'development' ?
-    'http://localhost:3000' : 'https://newsteller.io';
-
-  return fetch(`${serverUrl}/api/v1/quotes/search`, {
+  return fetch(`https://newsteller.io/api/v1/quotes/search`, {
     method: 'POST',
     mode: 'cors',
     headers: {
