@@ -7,6 +7,7 @@ import Developers from './Routes/Developers/Developers.js';
 import Home from './Routes/Home/Home.js';
 import Examples from './Routes/Examples.js';
 import Guidelines from './Routes/Guidelines/Guidelines.js';
+import Quotes from './Routes/Quotes/Quotes.js';
 import NotFound from './Routes/NotFound.js';
 import './App.css';
 
@@ -52,6 +53,11 @@ function App() {
                       Guidelines
                   </Typography>
               </NavLink>
+              <NavLink className={classes.navlink} to="/quotes" activeClassName={classes.current}>
+                  <Typography variant="h6" color="inherit">
+                      Quotes explorer
+                  </Typography>
+              </NavLink>
             </Toolbar>
           </Container>
         </AppBar>
@@ -80,6 +86,12 @@ function App() {
             path="/guidelines"
             render={() => (
               <Page title="Guidelines" component={Guidelines} />
+            )}
+          />
+          <Route
+            path="/quotes"
+            render={() => (
+              <Page title="Quotes explorer" component={Quotes} />
             )}
           />
           <Route

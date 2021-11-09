@@ -68,7 +68,7 @@ const getViews = (cardItems, classes) => {
 
   // Split lorem ipsum text to insert popover trigger element
   const elements = cardItems.map((item, index) => {
-    const { id, title } = item;
+    const { id, term } = item;
     const text = lorems[index];
 
     // Split text to insert trigger element
@@ -77,11 +77,11 @@ const getViews = (cardItems, classes) => {
     const first = splitted.slice(0, sep).join(' ');
     const second = splitted.slice(sep + 1).join(' ');
 
-    const html = `\t<p>\n\t\t${first}\n\t\t<span data-toggle="popovercard" data-card-id="${id}">${title}</span>\n\t\t${second}\n\t</p>`;
+    const html = `\t<p>\n\t\t${first}\n\t\t<span data-toggle="popovercard" data-card-id="${id}">${term}</span>\n\t\t${second}\n\t</p>`;
     const jsx = (
       <p key={`jsx-p-${id}`}>
         {first}{' '}
-        <span className={classes.popoverTrigger} data-toggle="popovercard" data-card-id={`${id}`}>{title}</span>
+        <span className={classes.popoverTrigger} data-toggle="popovercard" data-card-id={`${id}`}>{term}</span>
         {' '}{second}
       </p>
     );
@@ -140,8 +140,8 @@ function SplitView({ cardItems, classes }) {
 SplitView.propTypes = {
   cardItems: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    body: PropTypes.string,
+    term: PropTypes.string.isRequired,
+    definition: PropTypes.string,
   })).isRequired,
 };
 

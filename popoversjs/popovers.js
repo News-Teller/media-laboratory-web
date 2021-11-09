@@ -107,8 +107,8 @@ const reloadPopoversjsElements = (function (Popper) {
     if (!id || !guidelinesData || !(id in guidelinesData)) return;
 
     // Set tooltip content
-    tooltipTitle.innerHTML = guidelinesData[id]['title'];
-    tooltipBody.innerHTML = guidelinesData[id]['body'];
+    tooltipTitle.innerHTML = guidelinesData[id]['term'];
+    tooltipBody.innerHTML = guidelinesData[id]['definition'];
 
     // Make the tooltip visible
     tooltip.setAttribute('data-show', '');
