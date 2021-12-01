@@ -1,188 +1,192 @@
-import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { Grid, Container, Avatar, Link, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { HeroContainer } from '../../Components'
-import sharedStyles from '../../SharedStyles';
-import ajm from './Partners/ajm.png';
-import epfl from './Partners/epfl.png';
-import heidi from './Partners/heidi.png';
-import imi from './Partners/imi.png';
+import React from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { HashRouter as Link } from "react-router-dom";
 
-import LibraryBooks from '@material-ui/icons/LibraryBooks';
-import WebIcon from '@material-ui/icons/Web';
-import TimerIcon from '@material-ui/icons/Timer';
-import MessageIcon from '@material-ui/icons/Message';
+import { HeroContainer } from "../../Components";
 
+import ajm from "./Partners/ajm.png";
+import epfl from "./Partners/epfl.png";
+import heidi from "./Partners/heidi.png";
+import imi from "./Partners/imi.png";
+import graphic from "./img/ML_graphic.svg";
+import quote from "./img/ML_quote.svg";
+import didactic from "./img/ML_didactic.svg";
+import update from "./img/ML_update.svg";
 
 const partners = [
   {
-    name: 'epfl',
+    name: "epfl",
     img: epfl,
-    url: 'https://www.epfl.ch',
+    url: "https://www.epfl.ch",
   },
   {
-    name: 'academie-du-journalisme-et-des-medias',
+    name: "academie-du-journalisme-et-des-medias",
     img: ajm,
-    url: 'https://unine.ch/ajm/',
+    url: "https://unine.ch/ajm/",
   },
   {
-    name: 'heidi.news',
+    name: "heidi.news",
     img: heidi,
-    url: 'https://www.heidi.news',
+    url: "https://www.heidi.news",
   },
   {
-    name: 'media-initiative',
+    name: "media-initiative",
     img: imi,
-    url: 'https://www.media-initiative.ch/',
-  }
+    url: "https://www.media-initiative.ch/",
+  },
 ];
 
-const useStyles = makeStyles((theme) => ({
-  ...sharedStyles(theme),
-  logo: {
-    width: '100%',
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  txtbox: {
-    marginTop: 60,
-  },
-  problemBox: {
-    padding: 32,
-    textAlign: 'center',
-    fontSize: '20px',
-    border: '1px solid lightgray',
-    borderRadius: '20px',
-  },
-  probTitle: {
-    marginBottom: theme.spacing(2),
-  },
-  probLink: {
-    paddingTop: theme.spacing(2),
-  },
-  avatar: {
-    backgroundColor: 'black',
-    margin: '0 auto',
-    marginBottom: '20px',
-  },
-  largeGutter: {
-    marginTop: '1.0em !important',
-    marginBottom: '1.0em !important',
-  }
-}));
-
 export default function Home() {
-  const classes = useStyles();
-
   return (
-
-    <Container>
+    <div>
       <HeroContainer
         title="Media Laboratory"
         subtitle="Media Laboratory is a initiative aiming to develop data-journalism in Switzerland."
-        backgroundColor="#ffb400"
-        backgroundElementsFill="%23ffe100"
       />
 
-      <Container className={classes.contentBox} maxWidth="md">
-        <Typography variant="h4" className={classes.largeGutter} >
-          Data meets journalism
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Data-journalism is an emergent practice that helps journalists conveying complex stories with data-visualizations.
-          Data stories have been used for years by technologist and hobbyists, but many challenges remain for a wider media adoption.
-          Our project is an inter-disciplinary collaboration between{' '}
-          <Link href="https://www.epfl.ch" rel="noreferrer">EPFL</Link>,{' '}
-          <Link href="https://unine.ch/ajm/" rel="noreferrer">AJM</Link> and {' '}
-          <Link href="https://www.heidi.news/" rel="noreferrer">Heidi.news</Link>{' '}
-          to identify those challenges and bootstrap open-source solutions for newsroom environments.
-        </Typography>
+      <div className="container " maxWidth="md">
+        <h3>Data meets journalism</h3>
+        <p>
+          Data-journalism is an emergent practice that helps journalists
+          conveying complex stories with data-visualizations. Data stories have
+          been used for years by technologist and hobbyists, but many challenges
+          remain for a wider media adoption. Our project is an
+          inter-disciplinary collaboration between{" "}
+          <Link href="https://www.epfl.ch" rel="noreferrer">
+            EPFL
+          </Link>
+          ,{" "}
+          <Link href="https://unine.ch/ajm/" rel="noreferrer">
+            AJM
+          </Link>{" "}
+          and{" "}
+          <Link href="https://www.heidi.news/" rel="noreferrer">
+            Heidi.news
+          </Link>{" "}
+          to identify those challenges and bootstrap open-source solutions for
+          newsroom environments.
+        </p>
 
-        <Typography variant="h5" className={classes.largeGutter} >
-          Features
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Our project aims to identify challenges faced by editorial teams, when creating data-supported content, as well as the difficulties encountered by public when exposed to these new article formats.
-
-        </Typography>
-        <Grid container spacing={2} columns={12}>
-          <Grid item xs={6}>
-          <div className={classes.problemBox}>
-            <Avatar className={classes.avatar}>
-              <WebIcon/>
-            </Avatar>
-            <div className={classes.probTitle}><b>Embeddable graphics</b></div>
-            <div>Media Laboratory generates visualizations that can be embedded everywhere with a single link.</div>
-            <div className={classes.probLink}>
-              See <Link component={RouterLink} to="/examples">Examples</Link>
+        <h4 className="mt-12">Features</h4>
+        <p>
+          Our project aims to identify challenges faced by editorial teams, when
+          creating data-supported content, as well as the difficulties
+          encountered by public when exposed to these new article formats.
+        </p>
+        <div className="grid grid-cols-12 mt-12">
+          <div className="col-span-5">
+            <h5 className="mb-6">Embeddable graphics</h5>
+            <div className="flex justify-between">
+              <div className="w-2/5">
+                <p>
+                  Media Laboratory generates visualizations that can be embedded
+                  everywhere with a single link. See{" "}
+                  <Link component={RouterLink} to="/examples">
+                    Examples
+                  </Link>
+                </p>
+              </div>
+              <div className="w-1/2">
+                <img src={graphic} alt={graphic} />
+              </div>
             </div>
           </div>
-          </Grid>
-          <Grid item xs={6}>
-          <div className={classes.problemBox}>
-            <Avatar className={classes.avatar}>
-              <LibraryBooks/>
-            </Avatar>
-            <div className={classes.probTitle}><b>Didactic support</b></div>
-            <div>We developed a didactic system, made of cards, that appears on top of technical terms in the figure and in the text.</div>
-            <div className={classes.probLink}>
-              See <Link component={RouterLink} to="/guidelines">Guidelines</Link>
+
+          <div className="col-span-5 col-end-13">
+            <h5 className="mb-6">Didactic support</h5>
+            <div className="flex justify-between">
+              <div className="w-2/5">
+                <p>
+                  We developed a didactic system, made of cards, that appears on
+                  top of technical terms in the figure and in the text. See{" "}
+                  <Link component={RouterLink} to="/guidelines">
+                    Guidelines
+                  </Link>
+                </p>
+              </div>
+              <div className="w-1/2">
+                <img src={didactic} alt={didactic} />
+              </div>
             </div>
           </div>
-          </Grid>
-          <Grid item xs={6}>
-          <div className={classes.problemBox}>
-            <Avatar className={classes.avatar}>
-              <TimerIcon/>
-            </Avatar>
-            <div className={classes.probTitle}><b>Continuous updates</b></div>
-            <div>We developpe a system that periodically update the visualization, e.g. such as fetching data from a database every day. </div>
-            <div className={classes.probLink}>
-              See <Link href="https://github.com/News-Teller/media-laboratory" rel="noreferrer">Documentation</Link>
+
+          <div className="col-span-5 ">
+            <h5 className="mb-6">Continuous updates</h5>
+            <div className="flex justify-between">
+              <div className="w-2/5">
+                <p>
+                  We developpe a system that periodically update the
+                  visualization, e.g. such as fetching data from a database
+                  every day. See{" "}
+                  <Link
+                    href="https://github.com/News-Teller/media-laboratory"
+                    rel="noreferrer"
+                  >
+                    Documentation
+                  </Link>
+                </p>
+              </div>
+              <div className="w-1/2">
+                <img src={update} alt={update} />
+              </div>
             </div>
           </div>
-          </Grid>
-          <Grid item xs={6}>
-          <div className={classes.problemBox}>
-            <Avatar className={classes.avatar}>
-              <MessageIcon/>
-            </Avatar>
-            <div className={classes.probTitle}><b>Quotes explorer</b></div>
-            <div>Quotes are often uttered by domain experts. Our tool contuniously extracts quotes from articles and links them with specific topics.</div>
-            <div className={classes.probLink}>
-              See <Link component={RouterLink} to="/quotes">Quotes explorer</Link>
+
+          <div className="col-span-5 col-end-13 ">
+            <h5 className="mb-6">Quotes explorer</h5>
+            <div className="flex justify-between">
+              <div className="w-2/5">
+                <p>
+                  Quotes are often uttered by domain experts. Our tool
+                  contuniously extracts quotes from articles and links them with
+                  specific topics. See{" "}
+                  <Link component={RouterLink} to="/quotes">
+                    Quotes explorer
+                  </Link>
+                </p>
+              </div>
+              <div className="w-1/2">
+                <img src={quote} alt={quote} />
+              </div>
             </div>
           </div>
-          </Grid>
-        </Grid>
+        </div>
+      </div>
+      <div className="border-t-4 border-primary border-dotted pt-12 mt-12">
+        <div className="container border-b-4 border-primary border-dotted pb-12 mb-12">
+          <div className="w-7/12 lg:pl-20">
+            <h3 className="text-black">Getting started</h3>
+            <div>
+              We propose an open-source system that creates a production-ready
+              environment for developing and deploying data-visualizations. Our
+              system can easily be deployed with Docker and comes with a
+              JupyterLab extension that manages your visualizations. Interested?
+              Learn{" "}
+              <Link component={RouterLink} to="/developers">
+                how to deploy your own
+              </Link>{" "}
+              or check the project{" "}
+              <Link
+                href="https://github.com/News-Teller/media-laboratory"
+                rel="noreferrer"
+              >
+                on Github
+              </Link>
+              .
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <Container maxWidth="md" className={classes.txtbox}>
-          <Typography variant="h5" className={classes.largeGutter} >
-            Getting started
-          </Typography>
-
-          <Typography variant="body1" gutterBottom>
-            We propose an open-source system that creates a production-ready environment for developing and deploying data-visualizations.
-            Our system can easily be deployed with Docker and comes with a JupyterLab extension that manages your visualizations.
-            Interested?
-            Learn <Link component={RouterLink} to="/developers">how to deploy your own</Link>{' '}
-            or check the project{' '}
-            <Link href="https://github.com/News-Teller/media-laboratory" rel="noreferrer">on Github</Link>.
-          </Typography>
-        </Container>
-
-        <Grid container spacing={3}>
-          {partners.map(item => (
-            <Grid key={`partner-${item.name}`} item xs={2}>
-              <a href={item.url} rel="noreferrer">
-                <img src={item.img} className={classes.logo} alt={item.name} />
-              </a>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Container>
+      <div className="flex justify-around p-12 items-center">
+        {partners.map((item) => (
+          <div className="w-1/12" key={`partner-${item.name}`}>
+            <a href={item.url} rel="noreferrer">
+              <img src={item.img} className="" alt={item.name} />
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
