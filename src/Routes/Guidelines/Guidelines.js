@@ -106,7 +106,7 @@ export default function GuideLines() {
       />
       <div className="container">
         {/* DEMO section */}
-        <div className="rounded-sm bg-gray-200 ">
+        <div className="rounded-sm bg-gray-200 p-6 mb-8">
           <h4>Demo</h4>
           <SplitView
             cardItems={

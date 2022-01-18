@@ -1,47 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import clsx from "clsx";
-import {
-  CardContent,
-  Chip,
-  Collapse,
-  IconButton,
-  Link,
-  Tooltip,
-  Typography,
-} from "@material-ui/core";
-import { AddCircle, RemoveCircle, ExpandMore } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/core/styles";
-import { red } from "@material-ui/core/colors";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-  avatar: {
-    backgroundColor: red[500],
-  },
-  collapsedContent: {
-    paddingTop: 0,
-    "& > *": {
-      margin: theme.spacing(0.5),
-    },
-  },
-}));
+import paperclip from ".././img/paperclip-light.svg";
+import eye from ".././img/eye-regular.svg";
+
 
 export default function MediaCard({
   id,
@@ -54,31 +16,30 @@ export default function MediaCard({
   onSelection,
   isDisabled,
 }) {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded((prevState) => !prevState);
-  };
-
   return (
-    <div>
-      <div>
+    <div className="bg-gray-100 p-6 rounded-sm relative">
+      <div className="">
         <h5>{term}</h5>
       </div>
-
+      <button  className="absolute top-4 right-3" onClick={onSelection} aria-label="add to code" disabled={isDisabled}>
+           <img className="w-6 mr-2" src={eye} alt={eye} />
+      </button>
       <div>
         <div>{definition}</div>
       </div>
-      <div className="">
-        <a className="" href={link}>source</a>
-      </div>
-      <div>
-        {tags.map((tag) => (
-          <div className="flex">
-            <span>tags:</span> {tag}
-          </div>
-        ))}
+      <div className="border-t border-gray-300 pt-3 mt-6">
+        <div className="">
+          <a className="text-xs text-primary leading-tight flex" href={link}>
+          <img className="w-2 mr-2" src={paperclip} alt={paperclip} /> 
+          source
+          </a>
+        </div>
+        <div className="flex ">
+          <p className="text-xs text-gray-500">tags:</p>
+          {tags.map((tag) => (
+            <p key={tag.toString()} className="text-xs px-2 ">{tag}</p>
+          ))}
+        </div>
       </div>
     </div>
   );

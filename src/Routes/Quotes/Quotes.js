@@ -148,14 +148,14 @@ export default function Quotes() {
     "Search on articles texts..." : "Search by speaker...";
 
   return (
-    <Container>
+    <div>
       <HeroContainer
         title="Quotes explorer"
         subtitle="Quotes are often uttered by domain experts. Our tool contuniously extracts quotes from articles and links them with specific topics."
         backgroundColor="#2618B1"
         backgroundElementsFill="%230b5fa4"
       />
-      <Container className={classes.contentBox}>
+      <div className="container">
 
         {/* Search box */}
         <Grid container spacing={2} className={classes.contentBoxGrid}>
@@ -288,7 +288,7 @@ export default function Quotes() {
           </Grid>
         </Grid>
 
-      </Container>
-    </Container>
+      </div>
+    </div>
   );
 }

@@ -112,10 +112,10 @@ function SplitView({ cardItems, classes }) {
   const [code, jsx] = getViews(cardItems, classes);
 
   return (
-    <div>
+    <div className="grid grid-cols-2 gap-6">
       <div>
         <h3>Code</h3>
-        <div >
+        <div>
           <CodeBlock
             text={code}
             language={'html'}
@@ -126,7 +126,7 @@ function SplitView({ cardItems, classes }) {
       </div>
       <div >
         <h3>Result</h3>
-        <div >
+        <div>
           <div>
             {jsx}
           </div>
