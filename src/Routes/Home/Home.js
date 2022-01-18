@@ -44,7 +44,7 @@ export default function Home() {
         subtitle="Media Laboratory is a initiative aiming to develop data-journalism in Switzerland."
       />
 
-      <div className="container " maxWidth="md">
+      <div className="container" >
         <h3>Data meets journalism</h3>
         <p>
           Data-journalism is an emergent practice that helps journalists

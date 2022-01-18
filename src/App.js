@@ -23,23 +23,23 @@ function App() {
             <div className="flex">
               <Link
                 to="/developers"
-                className="self-end text-gray-500 text-xl p-3 font-ttnorms"
+                className="self-end text-gray-500 text-xl p-3 font-ttnorms no-underline"
               >
                 Developers
               </Link>
               <Link
                 to="/examples"
-                className="self-end text-gray-500 text-xl p-3"
+                className="self-end text-gray-500 text-xl p-3 no-underline"
               >
                 Examples
               </Link>
               <Link
                 to="/guidelines"
-                className="self-end text-gray-500 text-xl p-3"
+                className="self-end text-gray-500 text-xl p-3 no-underline"
               >
                 Guidelines
               </Link>
-              <Link to="/quotes" className="self-end text-gray-500 text-xl p-3">
+              <Link to="/quotes" className="self-end text-gray-500 text-xl p-3 no-underline">
                 Quotes explorer
               </Link>
             </div>

@@ -26,6 +26,9 @@ p{
   @apply font-ttnormslight text-xl mb-3
 }
 
+.paragraph a{
+    @apply underline hover:text-primary
+}
 .App {
   text-align: center;
 }
@@ -54,6 +57,10 @@ p{
 
 .App-link {
   color: #61dafb;
+}
+
+.number--cirlce{
+  @apply bg-primary flex items-center justify-center w-7 h-7 rounded-full
 }
 
 @keyframes App-logo-spin {

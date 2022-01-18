@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardContent, Grid, Typography} from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles"
 import { CodeBlock, solarizedLight as codeTheme } from "react-code-blocks";
 
@@ -113,27 +112,27 @@ function SplitView({ cardItems, classes }) {
   const [code, jsx] = getViews(cardItems, classes);
 
   return (
-    <Grid container alignItems="stretch" spacing={2}>
-      <Grid item component={Card} xs={8} className={classes.card}>
-        <CardHeader title="Code" />
-        <CardContent className={classes.cardContent}>
+    <div>
+      <div>
+        <h3>Code</h3>
+        <div >
           <CodeBlock
             text={code}
             language={'html'}
             showLineNumbers={false}
             theme={codeTheme}
           />
-        </CardContent>
-      </Grid>
-      <Grid item component={Card} xs={4} className={classes.card}>
-        <CardHeader title="Result" />
-        <CardContent className={classes.cardContent}>
-          <Typography variant="body1" align="justify" component="div">
+        </div>
+      </div>
+      <div >
+        <h3>Result</h3>
+        <div >
+          <div>
             {jsx}
-          </Typography>
-        </CardContent>
-      </Grid>
-    </Grid>
+          </div>
+        </div>
+      </div>
+    </div>
     );
 }
 
